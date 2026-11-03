@@ -10,7 +10,16 @@ import Social from './Social.astro';
 </style>
 
 <footer>
-  <Social platform="twitter" username="pass" />
+  <a href={`https://space.bilibili.com/351242712?spm_id_from=333.337.0.0`}>{"bilibili"}</a>
+  <style>           /* This style here is just for decorating bilibili */
+  a {
+    padding: 0.5rem 1rem;
+    color: white;
+    background-color: #127a3a;
+    text-decoration: none;
+  }
+  </style>
   <Social platform="github" username="qitanghu" />
   <Social platform="youtube" username="pass" />
 </footer>
+

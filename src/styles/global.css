@@ -74,3 +74,23 @@ h1 {
     display: none;
   }
 }
+
+/* nav styles (for switching language ) */
+
+.lang-switch {
+  display: flex;
+  gap: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+.lang-switch a {
+  padding: 4px 12px;
+  border-radius: 999px;
+  border: 1px solid #aaa;
+  text-decoration: none;
+  color: #222;
+}
+
+.lang-switch a:hover {
+  background: #eee;
+}

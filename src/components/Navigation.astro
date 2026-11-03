@@ -1,7 +1,13 @@
 ---
+import { useTranslations } from '../i18n/ui';
+
+const t = useTranslations(Astro.currentLocale);
+const localePrefix = Astro.currentLocale === 'ch' ? '/ch' : '';
+const homePath = localePrefix ? `${localePrefix}/` : '/';
 ---
+
 <div id="main-menu" class="nav-links">
-  <a href="/">Home</a>
-  <a href="/about/">About</a>
-  <a href="/blog/">Blog</a>
+  <a href={homePath}>{t['nav.home']}</a>
+  <a href={`${localePrefix}/about/`}>{t['nav.about']}</a>
+  <a href={`${localePrefix}/blog/`}>{t['nav.blog']}</a>
 </div>

@@ -1,0 +1,22 @@
+---
+import BlogPost from '../../components/BlogPost.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { useTranslations } from '../../i18n/ui';
+
+const t = useTranslations(Astro.currentLocale);
+const allPosts = Object.values(
+  import.meta.glob<{ url: string; frontmatter: { title: string } }>(
+    '../posts/*.md',
+    { eager: true },
+  ),
+);
+---
+
+<BaseLayout pageTitle={t['blog.title']}>
+  <p>{t['blog.description']}</p>
+  <ul>
+    {allPosts.map((post) => (
+      <BlogPost url={post.url} title={post.frontmatter.title} />
+    ))}
+  </ul>
+</BaseLayout>

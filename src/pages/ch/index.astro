@@ -1,0 +1,10 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { useTranslations } from '../../i18n/ui';
+
+const t = useTranslations(Astro.currentLocale);
+const pageTitle = t['hero.title'];
+---
+
+<BaseLayout pageTitle={pageTitle}>
+</BaseLayout>
