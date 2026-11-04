@@ -1,15 +1,13 @@
 ---
-import Navigation from '../components/Navigation.astro';
-import Footer from '../components/Footer.astro';
 import BlogPost from '../components/BlogPost.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import '../styles/global.css';
-const allPosts = Object.values(import.meta.glob<{ url: string; frontmatter: { title: string } }>('./posts/*.md', { eager: true }));
-const pageTitle = "Blog"
+import { allPosts } from '../data/posts';
+
+const pageTitle = 'Blog';
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-  <p>Welcome, i will update this site regularly.</p>
+  <p>Welcome! I will update this site regularly.</p>
   <ul>
     {allPosts.map((post) => (
       <BlogPost url={post.url} title={post.frontmatter.title} />

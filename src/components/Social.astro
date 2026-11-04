@@ -1,16 +1,11 @@
 ---
-const { platform, username } = Astro.props;   
+interface Props {
+  platform: 'github' | 'youtube';
+  username: string;
+}
 
+const { platform, username } = Astro.props;
+const profileUrl = `https://www.${platform}.com/${username}`;
 ---
-<a href={`https://www.${platform}.com/${username}`}>{platform}</a>
 
-
-
-<style>
-  a {
-    padding: 0.5rem 1rem;
-    color: white;
-    background-color: #127a3a;
-    text-decoration: none;
-  }
-</style>
+<a class="social-link" href={profileUrl}>{platform}</a>

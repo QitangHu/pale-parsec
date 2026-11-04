@@ -3,7 +3,7 @@ import { useTranslations } from '../i18n/ui';
 
 const t = useTranslations(Astro.currentLocale);
 const localePrefix = Astro.currentLocale === 'ch' ? '/ch' : '';
-const homePath = localePrefix ? `${localePrefix}/` : '/';
+const homePath = `${localePrefix}/`;
 ---
 
 <div id="main-menu" class="nav-links">

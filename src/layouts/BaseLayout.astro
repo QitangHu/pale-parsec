@@ -4,36 +4,56 @@ import Footer from '../components/Footer.astro';
 import '../styles/global.css';
 import { useTranslations } from '../i18n/ui';
 
+interface Props {
+  pageTitle?: string;
+}
+
 const t = useTranslations(Astro.currentLocale);
 const { pageTitle = 'Home Page' } = Astro.props;
+const isChinese = Astro.currentLocale === 'ch';
+
+// Keep the current route when switching languages, including the home page.
 const enPath = Astro.url.pathname.replace(/^\/ch(?=\/|$)/, '') || '/';
-const chPath = enPath === '/' ? '/ch/' : '/ch' + enPath;
+const chPath = enPath === '/' ? '/ch/' : `/ch${enPath}`;
 ---
 
-<html lang={Astro.currentLocale === 'ch' ? 'zh-CN' : Astro.currentLocale}>
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{pageTitle}</title>
-	</head>
-	<body>
-		<nav aria-label="Language" class="lang-switch">
-			<a href={enPath} class={Astro.currentLocale === 'en' ? 'active' : undefined}>EN</a>
-			<a href={chPath} class={Astro.currentLocale === 'ch' ? 'active' : undefined}>中文</a>
-		</nav>
-    	<Header />
+<html lang={isChinese ? 'zh-CN' : 'en'}>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{pageTitle}</title>
+  </head>
+  <body>
+    <nav aria-label="Language" class="lang-switch">
+      <a
+        href={enPath}
+        class={isChinese ? undefined : 'active'}
+        aria-current={!isChinese ? 'page' : undefined}
+      >
+        EN
+      </a>
+      <a
+        href={chPath}
+        class={isChinese ? 'active' : undefined}
+        aria-current={isChinese ? 'page' : undefined}
+      >
+        中文
+      </a>
+    </nav>
+    <Header />
 
-		<h1>{pageTitle}</h1>
-        <slot />
-		
-		<p>{t['hero.description']}</p>
+    <main>
+      <h1>{pageTitle}</h1>
+      <slot />
+      <p>{t['hero.description']}</p>
+    </main>
 
-	    <Footer />
-		<script>
-    	    import "../scripts/menu.js";
-  		</script>
-	</body>
+    <Footer />
+    <script>
+      import '../scripts/menu.js';
+    </script>
+  </body>
 </html>

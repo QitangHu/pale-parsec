@@ -1,25 +1,9 @@
 ---
 import Social from './Social.astro';
 ---
-<style>
-  footer {
-    display: flex;
-    gap: 1rem;
-    margin-top: 2rem;
-  }
-</style>
 
 <footer>
-  <a href={`https://space.bilibili.com/351242712?spm_id_from=333.337.0.0`}>{"bilibili"}</a>
-  <style>           /* This style here is just for decorating bilibili */
-  a {
-    padding: 0.5rem 1rem;
-    color: white;
-    background-color: #127a3a;
-    text-decoration: none;
-  }
-  </style>
+  <a class="social-link" href="https://space.bilibili.com/351242712">Bilibili</a>
   <Social platform="github" username="qitanghu" />
   <Social platform="youtube" username="pass" />
 </footer>
-

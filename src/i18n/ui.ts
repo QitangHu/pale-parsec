@@ -10,6 +10,7 @@ export const ui = {
     'hero.description':
       'Welcome to my personal blog site! Here, I share my thoughts, experiences, and insights on a variety of topics.',
   },
+  // Astro uses "ch" in routes; map that locale to these Chinese translations.
   zh: {
     'nav.home': '首页',
     'nav.about': '关于',
