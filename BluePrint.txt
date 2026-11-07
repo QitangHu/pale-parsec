@@ -1,0 +1,30 @@
+
+
+src/
+├─ components/        # 语言切换器、导航、页脚，不动，继续复用
+├─ content/           ✅【重点新增】Content Collections
+│  ├─ config.ts       # 在这里定义blogs的schema（你正在改的文件！）
+│  └─ blogs/          # 所有md博客按语言分包
+│     ├─ en/
+│     │  └─ post-1.md
+│     └─ zh/
+│        └─ post-1.md
+|  ├── projects/      # 未来加的
+│  └── reading/       # 未来加的
+├─ data/
+│  └─ navigation.ts   # 导航配置，放这里，只存数据，不写页面
+├─ i18n/
+│  └─ ui.ts           # 就是你刚才翻译字典那个文件，不动
+├─ layouts/
+│  └─ BaseLayout.astro
+├─ pages/
+│  ├─ index.astro     # 英文默认首页 /
+│  ├─ about.astro     # 英文默认 /about
+│  ├─ blog.astro      # 英文默认 /blog
+│  └─ [lang]/         ✅【核心文件夹，新建】动态语言路由
+│     ├─ index.astro  # /zh、/es、/ja 首页
+│     ├─ about.astro  # /zh/about
+│     └─ blog.astro   # /zh/blog
+|     └── ... # 以后加的项目页全放这里
+├─ scripts/
+└─ styles/

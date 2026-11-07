@@ -15,8 +15,7 @@ const publishedDate = frontmatter.pubDate.slice(0, 10);
 
 <BaseLayout pageTitle={frontmatter.title}>
   <p>
-    Published on:
-    <time datetime={publishedDate}>{publishedDate}</time>
+    Published on: <time datetime={publishedDate}>{publishedDate}</time>
   </p>
   <p>Written by {frontmatter.author}</p>
   <slot />

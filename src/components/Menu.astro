@@ -1,4 +1,12 @@
 ---
+import { useTranslations } from '../i18n/ui';
+
+interface Props {
+  lang: string;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
 ---
 
 <button
@@ -7,5 +15,5 @@
   aria-controls="main-menu"
   class="menu"
 >
-  Menu
+  {t('menu.label')}
 </button>

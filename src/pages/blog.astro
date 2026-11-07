@@ -1,16 +1,5 @@
 ---
-import BlogPost from '../components/BlogPost.astro';
-import BaseLayout from '../layouts/BaseLayout.astro';
-import { allPosts } from '../data/posts';
-
-const pageTitle = 'Blog';
+import ContentPage from '../components/ContentPage.astro';
 ---
 
-<BaseLayout pageTitle={pageTitle}>
-  <p>Welcome! I will update this site regularly.</p>
-  <ul>
-    {allPosts.map((post) => (
-      <BlogPost url={post.url} title={post.frontmatter.title} />
-    ))}
-  </ul>
-</BaseLayout>
+<ContentPage page="blog" lang="en" />

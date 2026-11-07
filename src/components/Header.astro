@@ -1,11 +1,19 @@
 ---
 import Navigation from './Navigation.astro';
 import Menu from './Menu.astro';
+import { useTranslations } from '../i18n/ui';
+
+interface Props {
+  lang: string;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
 ---
 
 <header>
-  <nav aria-label="Main navigation">
-    <Menu />
-    <Navigation />
+  <nav aria-label={t('nav.label')}>
+    <Menu lang={lang} />
+    <Navigation lang={lang} />
   </nav>
 </header>

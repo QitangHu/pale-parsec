@@ -1,0 +1,30 @@
+---
+import BlogPost from './BlogPost.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getPosts } from '../data/posts';
+import { useTranslations } from '../i18n/ui';
+
+type Page = 'home' | 'about' | 'projects' | 'resources' | 'study' | 'blog';
+
+interface Props {
+  page: Page;
+  lang: string;
+}
+
+const { page, lang } = Astro.props;
+const t = useTranslations(lang);
+const title = t(`page.${page}.title`);
+const description = t(`page.${page}.description`);
+const posts = page === 'blog' ? await getPosts(lang) : [];
+---
+
+<BaseLayout pageTitle={title} lang={lang}>
+  <p>{description}</p>
+  {page === 'blog' && (
+    <ul>
+      {posts.map((post) => (
+        <BlogPost url={post.url} title={post.frontmatter.title} />
+      ))}
+    </ul>
+  )}
+</BaseLayout>

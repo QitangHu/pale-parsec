@@ -1,6 +1,6 @@
 ---
-layout: ../../layouts/MarkdownPostLayout.astro
 title: My Fourth Blog Post
+lang: en
 author: Learner
 description: "This post will show up on its own!"
 image:
